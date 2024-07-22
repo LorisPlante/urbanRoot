@@ -24,10 +24,11 @@ export default function RootLayout({
         <meta name="msapplication-config" content="/medias/img/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#ffffff" />
         {/* ------ FONTS ------ */}
-        <link rel="preload" href="/fonts/tanker/Tanker-Regular.ttf" as="Tanker" type="font/ttf" crossOrigin="" />
-        <link rel="preload" href="/fonts/tanker/Tanker-Regular.eot" as="Tanker" type="font/eot" crossOrigin="" />
-        <link rel="preload" href="/fonts/tanker/Tanker-Regular.woff" as="Tanker" type="font/woff" crossOrigin="" />
-        <link rel="preload" href="/fonts/tanker/Tanker-Regular.woff2" as="Tanker" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/fonts/TANKER/Tanker-Regular.ttf" as="Tanker" type="font/ttf" crossOrigin="" />
+        <link rel="preload" href="/fonts/TANKER/Tanker-Regular.otf" as="Tanker" type="font/otf" crossOrigin="" />
+        <link rel="preload" href="/fonts/TANKER/Tanker-Regular.eot" as="Tanker" type="font/eot" crossOrigin="" />
+        <link rel="preload" href="/fonts/TANKER/Tanker-Regular.woff" as="Tanker" type="font/woff" crossOrigin="" />
+        <link rel="preload" href="/fonts/TANKER/Tanker-Regular.woff2" as="Tanker" type="font/woff2" crossOrigin="" />
       </head>
       <body>{children}</body>
     </html>

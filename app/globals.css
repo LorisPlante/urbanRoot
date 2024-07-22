@@ -5,25 +5,31 @@
 @layer base {
   @font-face {
     font-family: "Tanker";
-    src: url(/fonts/tanker/Tanker-Regular.eot) format("eot");
+    src: url(/fonts/TANKER/Tanker-Regular.eot) format("eot");
     font-weight: 400;
     font-style: normal;
   }
   @font-face {
     font-family: "Tanker";
-    src: url(/fonts/tanker/Tanker-Regular.ttf) format("ttf");
+    src: url(/fonts/TANKER/Tanker-Regular.ttf) format("ttf");
     font-weight: 400;
     font-style: normal;
   }
   @font-face {
     font-family: "Tanker";
-    src: url(/fonts/tanker/Tanker-Regular.woff) format("woff");
+    src: url(/fonts/TANKER/Tanker-Regular.otf) format("otf");
     font-weight: 400;
     font-style: normal;
   }
   @font-face {
     font-family: "Tanker";
-    src: url(/fonts/tanker/Tanker-Regular.woff2) format("woff2");
+    src: url(/fonts/TANKER/Tanker-Regular.woff) format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Tanker";
+    src: url(/fonts/TANKER/Tanker-Regular.woff2) format("woff2");
     font-weight: 400;
     font-style: normal;
   }
