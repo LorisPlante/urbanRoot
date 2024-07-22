@@ -81,7 +81,7 @@ const Map: React.FC = () => {
                       {location.cp} {location.ville}
                     </p>
                     <button onClick={() => setSelectedLocation(location)} className="bg-darkGreen text-white px-4 py-2 rounded mt-2">
-                      Plus d'infos
+                      {`Plus d'infos`}
                     </button>
                   </div>
                 </Popup>

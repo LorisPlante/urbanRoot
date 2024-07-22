@@ -74,7 +74,7 @@ const Modal: React.FC<ModalProps> = ({ location, onClose }) => {
             {location.list_typeprod.join(", ")}
           </p>
         )}
-        {location.ouvertpublic === "0" ? <p className="font-bold text-darkGreen">N'est pas ouvert au public</p> : <p className="font-bold text-darkGreen">Ouvert au public</p>}
+        {location.ouvertpublic === "0" ? <p className="font-bold text-darkGreen">{`N'est pas ouvert au public`}</p> : <p className="font-bold text-darkGreen">Ouvert au public</p>}
 
         {/* Ajoutez plus d'informations ici selon vos besoins */}
       </div>
