@@ -1,15 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation"; // Utilisez usePathname de next/navigation
 
 export default function Header() {
   const [menu, setMenu] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  const pathname = usePathname(); // Utilisez usePathname pour obtenir le chemin actuel
 
   function toggleMenu() {
     setMenu(!menu);
   }
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +41,10 @@ export default function Header() {
     };
   }, [lastScrollY]);
 
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <header className="z-[9999]">
       <nav id="navMobile" className="z-40 bg-secondary fixed top-0 left-0 w-full flex md:hidden justify-between items-center py-4 px-[5vw] border-b-access border-custom">
@@ -53,7 +65,7 @@ export default function Header() {
       </nav>
       <div
         id="menu"
-        className={`z-50 overflow-hidden fixed top-0 left-0 w-full h-screen bg-darkGreen text-secondary font-custom-paragraph flex justify-start items-start flex-col gap-4 px-[5vw] transform transition-all duration-300 ${
+        className={`z-[10000] overflow-hidden fixed top-0 left-0 w-full h-screen bg-darkGreen text-secondary font-custom-paragraph flex justify-start items-start flex-col gap-4 px-[5vw] transform transition-all duration-300 ${
           menu ? " translate-x-0" : "translate-x-full"
         }`}>
         <div className="w-full flex justify-between items-center py-4 ">
@@ -80,28 +92,28 @@ export default function Header() {
         </div>
         <ul className="flex flex-col gap-8 text-3xl w-full items-center uppercase tracking-widest font-tanker">
           <li className="mb-12">
-            <a href="/connexion" className="w-fit px-6 py-2" title="Se connecter">
+            <a href="/connexion" className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-secondary" : ""}`} title="Se connecter">
               <span>Connexion</span>
             </a>
           </li>
           <li>
-            <a href="/" className="block w-fit px-3 py-2" title="Retourner à l'accueil">
+            <a href="/" className={`block w-fit px-3 py-2 ${isMounted && pathname === "/" ? "border-b-4 border-secondary" : ""}`} title="Retourner à l'accueil">
               <span>Accueil</span>
             </a>
           </li>
           <li>
-            <a href="/carte" className="block w-fit px-3 py-2" title="Parcourir la carte">
+            <a href="/carte" className={`block w-fit px-3 py-2 ${isMounted && pathname === "/carte" ? "border-b-4 border-secondary" : ""}`} title="Parcourir la carte">
               <span>Carte</span>
             </a>
           </li>
 
           <li>
-            <a href="/forum" className="w-fit px-6 py-2" title="Acceder au Forum">
+            <a href="/forum" className={`w-fit px-6 py-2 ${isMounted && pathname === "/forum" ? "border-b-4 border-secondary" : ""}`} title="Acceder au Forum">
               <span>Forum</span>
             </a>
           </li>
           <li>
-            <a href="/guides" className="w-fit px-6 py-2" title="Voir les guides">
+            <a href="/guides" className={`w-fit px-6 py-2 ${isMounted && pathname === "/guides" ? "border-b-4 border-secondary" : ""}`} title="Voir les guides">
               <span>Guides</span>
             </a>
           </li>
@@ -117,28 +129,31 @@ export default function Header() {
         </a>
         <ul className="flex gap-4 items-center uppercase tracking-widest font-tanker text-xl">
           <li>
-            <a href="/" className="block w-fit px-3 py-2" title="Retourner à l'accueil">
+            <a href="/" className={`block w-fit px-3 py-2 ${isMounted && pathname === "/" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`} title="Retourner à l'accueil">
               <span>Accueil</span>
             </a>
           </li>
           <li>
-            <a href="/carte" className="block w-fit px-3 py-2" title="Parcourir la carte">
+            <a
+              href="/carte"
+              className={`block w-fit px-3 py-2 ${isMounted && pathname === "/carte" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`}
+              title="Parcourir la carte">
               <span>Carte</span>
             </a>
           </li>
 
           <li>
-            <a href="/forum" className="w-fit px-6 py-2" title="Acceder au Forum">
+            <a href="/forum" className={`w-fit px-6 py-2 ${isMounted && pathname === "/forum" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`} title="Acceder au Forum">
               <span>Forum</span>
             </a>
           </li>
           <li>
-            <a href="/guides" className="w-fit px-6 py-2" title="Voir les guides">
+            <a href="/guides" className={`w-fit px-6 py-2 ${isMounted && pathname === "/guides" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`} title="Voir les guides">
               <span>Guides</span>
             </a>
           </li>
           <li>
-            <a href="/connexion" className="w-fit px-6 py-2" title="Se connecter">
+            <a href="/connexion" className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`} title="Se connecter">
               <span>Connexion</span>
             </a>
           </li>
