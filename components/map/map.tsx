@@ -63,24 +63,31 @@ export default function Map() {
           center={[46.5397222, 2.4302777777777775]}
           zoom={6}
           minZoom={2}
-          maxZoom={20}
+          maxZoom={18}
           maxBounds={bounds}
           maxBoundsViscosity={1.0}
           className="w-4/5 h-[calc(100vh-110px)] z-10">
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
-          />
+          <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <MarkerClusterGroup>
             {filteredLocations.map((location) => (
               <Marker key={location.slug} position={[parseFloat(location.lat), parseFloat(location.lng)]} icon={ICON}>
                 <Popup>
-                  <div>
-                    <h3>{location.title}</h3>
+                  <div className=" flex flex-col justify-start items-start gap-3 space-y-0">
+                    <h3 className="font-bold">{location.title}</h3>
                     {location.img && <img src={location.img} alt={location.title} style={{ width: "100px" }} />}
-                    <p>{location.ville}</p>
-                    <p>Type: {location.list_typeprojet.join(", ")}</p>
-                    <p>Activités: {location.list_typeactivite.join(", ")}</p>
+                    <p>
+                      {location.cp}, {location.ville}
+                    </p>
+                    <p className="text-darkGreen font-bold">
+                      Type: <br />
+                      <span className="text-primary font-normal">{location.list_typeprojet.join(", ")}</span>
+                    </p>
+                    {location.list_typeactivite && (
+                      <p className="text-darkGreen font-bold">
+                        Activités : <br />
+                        <span className="text-primary font-normal">{location.list_typeactivite.join(", ")}</span>
+                      </p>
+                    )}
                   </div>
                 </Popup>
               </Marker>
