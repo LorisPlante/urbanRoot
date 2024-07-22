@@ -23,8 +23,27 @@ type ModalProps = {
   onClose: () => void;
 };
 
+interface LocationProps {
+  list_typeprojet: Array<string>;
+}
+
 const Modal: React.FC<ModalProps> = ({ location, onClose }) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
+
+  const renderProjectType = (type: string): JSX.Element | null => {
+    switch (type) {
+      case "jardin-potager":
+        return <span>Jardin / Potager</span>;
+      case "ferme-urbaine-participative":
+        return <span>Ferme urbaine participative</span>;
+      case "ferme-urbaine-specialisee":
+        return <span>Ferme urbaine spécialisée</span>;
+      default:
+        return null;
+    }
+  };
+
+  const projectTypesJSX = location?.list_typeprojet.map((type) => renderProjectType(type)).filter((element): element is JSX.Element => element !== null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -48,35 +67,42 @@ const Modal: React.FC<ModalProps> = ({ location, onClose }) => {
           &times;
         </button>
         <h2 className="text-2xl font-bold mb-4">{location.title}</h2>
-        {location.img && <img src={location.img} alt={location.title} className="w-full h-auto mb-4" />}
+        {location.img && <img src={location.img} alt={location.title} className="w-3/4 mx-auto block" />}
         <p>
           {location.cp} {location.ville}
         </p>
         <p>
           <strong className="text-darkGreen">Type : </strong>
-          {location.list_typeprojet.join(", ")}
+          {projectTypesJSX?.reduce((prev, curr, index) => (
+            <>
+              {prev}
+              {index > 0 && ", "}
+              {curr}
+            </>
+          ))}
         </p>
         {location.list_typeactivite.length > 0 && (
           <p>
             <strong className="text-darkGreen">Activités : </strong>
-            {location.list_typeactivite.join(", ")}
+            {location.list_typeactivite.map((type) => type.replace(/-/g, " ")).join(", ")}
           </p>
         )}
         {location.list_techniqueprod.length > 0 && (
           <p>
             <strong className="text-darkGreen">Technique de production : </strong>
-            {location.list_techniqueprod.join(", ")}
+            {location.list_techniqueprod.map((type) => type.replace(/-/g, " ")).join(", ")}
           </p>
         )}
         {location.list_typeprod.length > 0 && (
           <p>
             <strong className="text-darkGreen">Type de production : </strong>
-            {location.list_typeprod.join(", ")}
+            {location.list_typeprod.map((type) => type.replace(/-/g, " ")).join(", ")}
           </p>
         )}
-        {location.ouvertpublic === "0" ? <p className="font-bold text-darkGreen">{`N'est pas ouvert au public`}</p> : <p className="font-bold text-darkGreen">Ouvert au public</p>}
-
-        {/* Ajoutez plus d'informations ici selon vos besoins */}
+        <p>
+          <strong className="text-darkGreen">Accès : </strong>
+          {location.ouvertpublic === "0" ? <span>{`N'est pas ouvert au public`}</span> : <span>Ouvert au public</span>}
+        </p>
       </div>
     </div>
   );

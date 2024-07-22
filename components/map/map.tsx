@@ -69,14 +69,17 @@ const Map: React.FC = () => {
           maxBounds={bounds}
           maxBoundsViscosity={1.0}
           className="w-full md:w-4/5 h-[calc(100vh-438px)] md:h-[calc(100vh-110px)] z-10">
-          <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+          />
           <MarkerClusterGroup>
             {filteredLocations.map((location) => (
               <Marker key={location.slug} position={[parseFloat(location.lat), parseFloat(location.lng)]} icon={ICON}>
                 <Popup>
-                  <div className="flex flex-col justify-start items-start gap-3 space-y-0">
+                  <div className="flex flex-col justify-start items-start gap-3 space-y-0 w-48">
                     <h3 className="font-bold text-xl">{location.title}</h3>
-                    {location.img && <img src={location.img} alt={location.title} style={{ width: "100px" }} />}
+                    {location.img && <img src={location.img} alt={location.title} className="w-full" />}
                     <p>
                       {location.cp} {location.ville}
                     </p>
@@ -90,7 +93,7 @@ const Map: React.FC = () => {
           </MarkerClusterGroup>
         </MapContainer>
         <div className="w-full md:w-1/4 h-auto md:h-[calc(100vh-110px)] bg-secondary flex flex-col border-l-2 border-l-darkGreen gap-5 items-center justify-start py-11 px-4">
-          <p className="w-full text-3xl font-bold">Trier par :</p>
+          <p className="w-full text-3xl font-bold text-darkGreen">Trier par :</p>
           <div className="flex flex-col space-y-2 w-full">
             <label className={`w-full flex justify-between items-center cursor-pointer px-4 py-2 rounded ${selectedType === null ? "bg-lightGreen font-bold" : "bg-white"}`}>
               <span>Tout</span>
