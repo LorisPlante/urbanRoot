@@ -83,7 +83,7 @@ const Map: React.FC = () => {
                     <p>
                       {location.cp} {location.ville}
                     </p>
-                    <button onClick={() => setSelectedLocation(location)} className="bg-darkGreen text-white px-4 py-2 rounded mt-2">
+                    <button onClick={() => setSelectedLocation(location)} className="bg-darkGreen text-white px-5 py-3 rounded mt-2">
                       {`Plus d'infos`}
                     </button>
                   </div>
@@ -95,17 +95,17 @@ const Map: React.FC = () => {
         <div className="w-full md:w-1/4 h-auto md:h-[calc(100vh-110px)] bg-secondary flex flex-col border-l-2 border-l-darkGreen gap-5 items-center justify-start py-11 px-4">
           <p className="w-full text-3xl font-bold text-darkGreen">Trier par :</p>
           <div className="flex flex-col space-y-2 w-full">
-            <label className={`w-full flex justify-between items-center cursor-pointer px-4 py-2 rounded ${selectedType === null ? "bg-lightGreen font-bold" : "bg-white"}`}>
+            <label className={`w-full flex justify-between items-center cursor-pointer px-4 py-3 rounded ${selectedType === null ? "bg-lightGreen font-bold" : "bg-white"}`}>
               <span>Tout</span>
               <input type="radio" name="typeFilter" value="" checked={selectedType === null} onChange={() => setSelectedType(null)} />
             </label>
             <label
-              className={`w-full flex justify-between items-center cursor-pointer px-4 py-2 rounded ${selectedType === "jardin-potager" ? "bg-lightGreen font-bold" : "bg-white"}`}>
+              className={`w-full flex justify-between items-center cursor-pointer px-4 py-3 rounded ${selectedType === "jardin-potager" ? "bg-lightGreen font-bold" : "bg-white"}`}>
               <span>Jardin / Potager</span>
               <input type="radio" name="typeFilter" value="jardin-potager" checked={selectedType === "jardin-potager"} onChange={() => setSelectedType("jardin-potager")} />
             </label>
             <label
-              className={`w-full flex justify-between items-center cursor-pointer px-4 py-2 rounded ${
+              className={`w-full flex justify-between items-center cursor-pointer px-4 py-3 rounded ${
                 selectedType === "ferme-urbaine-participative" ? "bg-lightGreen font-bold" : "bg-white"
               }`}>
               <span>Ferme Urbaine Participative</span>
@@ -118,7 +118,7 @@ const Map: React.FC = () => {
               />
             </label>
             <label
-              className={`w-full flex justify-between items-center cursor-pointer px-4 py-2 rounded ${
+              className={`w-full flex justify-between items-center cursor-pointer px-4 py-3 rounded ${
                 selectedType === "ferme-urbaine-specialisee" ? "bg-lightGreen font-bold" : "bg-white"
               }`}>
               <span>Ferme Urbaine Spécialisée</span>
