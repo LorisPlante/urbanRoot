@@ -31,7 +31,7 @@ export default function Home() {
               title="Visiter la carte">
               Visiter la carte
             </a>
-            <p>Si vous avez connaissance d'un jardin non répertoriez, faisez nous en savoir !</p>
+            <p>{`Si vous avez connaissance d'un jardin non répertoriez, faisez nous en savoir !`}</p>
           </div>
           <div className="overflow-hidden w-3/4 mx-auto sm:w-1/2 md:w-1/3 h-fit rounded-2xl border-2 border-lightGreen">
             <a href="/carte" className="relative" title="Visiter la carte">
