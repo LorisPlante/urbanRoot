@@ -33,7 +33,7 @@ export default function Home() {
             </a>
             <p>{`Si vous avez connaissance d'un jardin non répertoriez, faisez nous en savoir !`}</p>
           </div>
-          <div className="overflow-hidden w-3/4 mx-auto sm:w-1/2 md:w-1/3 h-fit rounded-2xl border-2 border-lightGreen">
+          <div className="overflow-hidden w-3/4 sm:w-1/2 md:w-1/3 mx-auto sm:mx-0 h-fit rounded-2xl border-2 border-lightGreen">
             <a href="/carte" className="relative" title="Visiter la carte">
               <img src="/medias/img/map-screen.png" alt="Capture d'écran de la carte intéractive" className="w-full transition-all duration-300" />
               <div className="absolute top-0 left-0 w-full h-full bg-lightGreen bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 cursor-pointer"></div>
