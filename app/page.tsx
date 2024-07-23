@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Header></Header>
-      <main className="flex min-h-screen flex-col items-center justify-start gap-4">
+      <main className="flex min-h-screen flex-col items-center justify-start gap-4 mt-24 sm:mt-0">
         <section className="relative w-full min-h-[44vw] p-mobile sm:p-desktop bg-[url(/medias/img/hero-landing.png)] bg-cover bg-center border-b-2 border-darkGreen">
           <div className="absolute top-[18vw] left-[10vw]">
             <h1 className="text-[8.5vw] leading-1">UrbanRoots</h1>
