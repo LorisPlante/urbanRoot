@@ -20,7 +20,7 @@ export default function Home() {
         </section>
         <section className="w-full p-mobile sm:p-desktop bg-secondary flex flex-col lg:flex-row justify-between items-center">
           <div className="w-full lg:w-[45%] flex flex-col gap-5 border-2 border-lightGreen rounded-xl px-10 py-8">
-            <h2 className="text-3xl sm:text-4xl">Bienvenue sur UrbanRoots</h2>
+            <h2 className="text-3xl sm:text-4xl">{`Bienvenue sur UrbanRoots`}</h2>
             <p>
               {`Bienvenue sur UrbanRoots, votre nouvelle plateforme dédiée au jardinage urbain collaboratif. UrbanRoots est né de l'ambition de créer une communauté verte et
               solidaire au cœur de nos villes. Nous croyons que chaque espace urbain, aussi petit soit-il, peut se transformer en un havre de verdure et de biodiversité,
@@ -29,7 +29,7 @@ export default function Home() {
           </div>
           <div className="bg-lightGreen bg-opacity-50 w-1/2 lg:w-[10%] h-10 lg:h-32"></div>
           <div className="w-full lg:w-[45%] flex flex-col gap-5 border-2 border-lightGreen rounded-xl px-10 py-8">
-            <h2 className="text-3xl sm:text-4xl">Qu'est-ce qu'UrbanRoots&nbsp;?</h2>
+            <h2 className="text-3xl sm:text-4xl">{`Qu'est-ce qu'UrbanRoots?`}</h2>
             <p>
               {`UrbanRoots vous offre une carte interactive pour localiser et créer des espaces de jardinage près de chez vous. Que vous soyez un jardinier débutant ou expérimenté,
               notre plateforme vous permet de partager vos ressources et conseils avec d'autres passionnés, d'organiser des événements communautaires, et de participer à des forums
