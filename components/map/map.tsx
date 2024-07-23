@@ -78,7 +78,7 @@ const Map: React.FC = () => {
               <Marker key={location.slug} position={[parseFloat(location.lat), parseFloat(location.lng)]} icon={ICON}>
                 <Popup>
                   <div className="flex flex-col justify-start items-start gap-3 space-y-0 w-48">
-                    <h3 className="font-bold text-xl">{location.title}</h3>
+                    <span className="font-bold font-tanker tracking-widest leading-1 text-xl">{location.title}</span>
                     {location.img && <img src={location.img} alt={location.title} className="w-full" />}
                     <p>
                       {location.cp} {location.ville}

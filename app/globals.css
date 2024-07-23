@@ -57,10 +57,5 @@ h3,
 h4 {
   font-family: "Tanker";
   font-weight: bold;
-  text-transform: uppercase;
   letter-spacing: 0.1em;
-}
-
-h2 {
-  font-size: 40px;
 }

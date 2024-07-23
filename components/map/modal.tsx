@@ -66,7 +66,7 @@ const Modal: React.FC<ModalProps> = ({ location, onClose }) => {
         <button onClick={onClose} className="absolute top-0 right-2 text-4xl font-bold transition-all duration-300 hover:scale-125 hover:text-darkGreen">
           &times;
         </button>
-        <h2 className="text-2xl font-bold mb-4">{location.title}</h2>
+        <span className="text-2xl font-bold font-tanker tracking-widest leading-1 mb-4">{location.title}</span>
         {location.img && <img src={location.img} alt={location.title} className="w-3/4 mx-auto block" />}
         <p>
           {location.cp} {location.ville}

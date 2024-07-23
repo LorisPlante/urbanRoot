@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <footer className="flex flex-col md:flex-row justify-start items-start md:items-start gap-10 md:gap-14 lg:gap-20 bg-lightGreen text-sm w-full py-11 px-[5vw] h-fit">
+      <footer className="flex flex-col md:flex-row justify-start items-start md:items-start gap-10 md:gap-14 lg:gap-20 bg-darkGreen text-secondary text-sm w-full py-11 px-[5vw] h-fit">
         <ul className="flex flex-col gap-3">
           <li className="font-bold text-xl pb-3 uppercase">Informations pratiques</li>
           <li>
@@ -20,7 +20,7 @@ export default function Footer() {
             </a>
           </li>
         </ul>
-        <div className=" w-1/3 md:w-[1px] h-[1px] md:h-40 bg-darkGreen"></div>
+        <div className=" w-1/3 md:w-[1px] h-[1px] md:h-40 bg-lightGreen"></div>
         <ul className="flex flex-col gap-3">
           <li className="font-bold text-xl pb-3 uppercase">Service client</li>
           <li>
@@ -33,22 +33,22 @@ export default function Footer() {
         <ul className="flex flex-col gap-3">
           <li className="font-bold text-xl pb-3 uppercase">Nous suivre</li>
           <li className="flex gap-3">
-            <a href="" target="_blank" title="Notre compte Instagram">
-              <svg viewBox="0 0 25 25" fill="none" className="w-10 fill-darkGreen">
+            <a href="" target="_blank" title="Notre compte Instagram" className="transform transition-all duration-300 hover:scale-110">
+              <svg viewBox="0 0 25 25" fill="none" className="w-10 fill-lightGreen">
                 <path d="M12.7915 24.3441H12.7381C6.06359 24.3441 0.633301 18.9138 0.633301 12.2392V12.1859C0.633301 5.51134 6.06359 0.0810547 12.7381 0.0810547H12.7915C19.466 0.0810547 24.8963 5.51134 24.8963 12.1859V12.2392C24.8963 18.9138 19.466 24.3441 12.7915 24.3441ZM12.7381 0.902333C6.51612 0.902333 1.45458 5.96386 1.45458 12.1859V12.2392C1.45458 18.4612 6.51612 23.5228 12.7381 23.5228H12.7915C19.0135 23.5228 24.075 18.4612 24.075 12.2392V12.1859C24.075 5.96386 19.0135 0.902333 12.7915 0.902333H12.7381Z" />
                 <path d="M16.3921 5.25977H9.13855C7.13463 5.25977 5.50439 6.89 5.50439 8.89392V15.5299C5.50439 17.5338 7.13463 19.164 9.13855 19.164H16.3921C18.396 19.164 20.0262 17.5338 20.0262 15.5299V8.89392C20.0262 6.89 18.396 5.25977 16.3921 5.25977ZM6.78641 8.89392C6.78641 7.59712 7.84175 6.54179 9.13855 6.54179H16.3921C17.6889 6.54179 18.7442 7.59712 18.7442 8.89392V15.5299C18.7442 16.8267 17.6889 17.882 16.3921 17.882H9.13855C7.84175 17.882 6.78641 16.8267 6.78641 15.5299V8.89392Z" />
                 <path d="M12.7651 15.5908C14.6286 15.5908 16.1455 14.0748 16.1455 12.2105C16.1455 10.3462 14.6295 8.83008 12.7651 8.83008C10.9008 8.83008 9.38477 10.3462 9.38477 12.2105C9.38477 14.0748 10.9008 15.5908 12.7651 15.5908ZM12.7651 10.1129C13.9223 10.1129 14.8635 11.0541 14.8635 12.2113C14.8635 13.3685 13.9223 14.3096 12.7651 14.3096C11.608 14.3096 10.6668 13.3685 10.6668 12.2113C10.6668 11.0541 11.608 10.1129 12.7651 10.1129Z" />
                 <path d="M16.4586 9.3763C16.9604 9.3763 17.3694 8.96811 17.3694 8.46549C17.3694 7.96287 16.9613 7.55469 16.4586 7.55469C15.956 7.55469 15.5479 7.96287 15.5479 8.46549C15.5479 8.96811 15.956 9.3763 16.4586 9.3763Z" />
               </svg>
             </a>
-            <a href="" target="_blank" title="Notre compte TikTok">
-              <svg viewBox="0 0 25 25" fill="none" className="w-10 fill-darkGreen">
+            <a href="" target="_blank" title="Notre compte TikTok" className="transform transition-all duration-300 hover:scale-110">
+              <svg viewBox="0 0 25 25" fill="none" className="w-10 fill-lightGreen">
                 <path d="M12.3433 24.3441H12.2899C5.61535 24.3441 0.185059 18.9138 0.185059 12.2392V12.1859C0.185059 5.51134 5.61535 0.0810547 12.2899 0.0810547H12.3433C19.0178 0.0810547 24.4481 5.51134 24.4481 12.1859V12.2392C24.4481 18.9138 19.0178 24.3441 12.3433 24.3441ZM12.2899 0.902333C6.06788 0.902333 1.00634 5.96386 1.00634 12.1859V12.2392C1.00634 18.4612 6.06788 23.5228 12.2899 23.5228H12.3433C18.5653 23.5228 23.6268 18.4612 23.6268 12.2392V12.1859C23.6268 5.96386 18.5653 0.902333 12.3433 0.902333H12.2899Z" />
                 <path d="M17.9828 8.97167V11.185C17.596 11.1472 17.0933 11.0594 16.5373 10.8557C15.8113 10.5896 15.2709 10.2258 14.917 9.94405V14.4176L14.9079 14.4036C14.9137 14.4923 14.917 14.5826 14.917 14.6738C14.917 16.8954 13.1093 18.7038 10.8869 18.7038C8.66457 18.7038 6.85693 16.8954 6.85693 14.6738C6.85693 12.4522 8.66457 10.643 10.8869 10.643C11.1046 10.643 11.3181 10.6602 11.5267 10.6939V12.8752C11.3263 12.8037 11.1112 12.7652 10.8869 12.7652C9.83489 12.7652 8.9783 13.6209 8.9783 14.6738C8.9783 15.7267 9.83489 16.5824 10.8869 16.5824C11.939 16.5824 12.7956 15.7259 12.7956 14.6738C12.7956 14.6344 12.7948 14.595 12.7923 14.5555V5.8623H15.004C15.0122 6.04956 15.0196 6.23846 15.0278 6.42571C15.0426 6.79446 15.174 7.14842 15.4032 7.43833C15.6717 7.77916 16.0684 8.17502 16.6252 8.49122C17.1467 8.78606 17.6362 8.91334 17.9828 8.9733V8.97167Z" />
               </svg>
             </a>
-            <a href="" target="_blank" title="Notre compte X">
-              <svg viewBox="0 0 25 25" fill="none" className="w-10 fill-darkGreen">
+            <a href="" target="_blank" title="Notre compte X" className="transform transition-all duration-300 hover:scale-110">
+              <svg viewBox="0 0 25 25" fill="none" className="w-10 fill-lightGreen">
                 <path d="M12.2617 24.3441H12.2083C5.53381 24.3441 0.103516 18.9138 0.103516 12.2392V12.1859C0.103516 5.51134 5.53381 0.0810547 12.2083 0.0810547H12.2617C18.9362 0.0810547 24.3665 5.51134 24.3665 12.1859V12.2392C24.3665 18.9138 18.9362 24.3441 12.2617 24.3441ZM12.2083 0.902333C5.98633 0.902333 0.924794 5.96386 0.924794 12.1859V12.2392C0.924794 18.4612 5.98633 23.5228 12.2083 23.5228H12.2617C18.4837 23.5228 23.5453 18.4612 23.5453 12.2392V12.1859C23.5453 5.96386 18.4837 0.902333 12.2617 0.902333H12.2083Z" />
                 <path
                   fillRule="evenodd"
@@ -57,8 +57,8 @@ export default function Footer() {
                 />
               </svg>
             </a>
-            <a href="" target="_blank" title="Notre serveur Discord">
-              <svg viewBox="0 0 25 25" fill="none" className="w-10 fill-darkGreen">
+            <a href="" target="_blank" title="Notre serveur Discord" className="transform transition-all duration-300 hover:scale-110">
+              <svg viewBox="0 0 25 25" fill="none" className="w-10 fill-lightGreen">
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
