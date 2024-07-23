@@ -1,10 +1,4 @@
-import type { Metadata } from "next";
 import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "Urban Roots",
-  description: "Urban Roots",
-};
 
 export default function RootLayout({
   children,
@@ -24,13 +18,17 @@ export default function RootLayout({
         <meta name="msapplication-config" content="/medias/img/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#ffffff" />
         {/* ------ FONTS ------ */}
-        <link rel="preload" href="/fonts/TANKER/Tanker-Regular.ttf" as="Tanker" type="font/ttf" crossOrigin="" />
         <link rel="preload" href="/fonts/TANKER/Tanker-Regular.otf" as="Tanker" type="font/otf" crossOrigin="" />
+        <link rel="preload" href="/fonts/TANKER/Tanker-Regular.ttf" as="Tanker" type="font/ttf" crossOrigin="" />
         <link rel="preload" href="/fonts/TANKER/Tanker-Regular.eot" as="Tanker" type="font/eot" crossOrigin="" />
         <link rel="preload" href="/fonts/TANKER/Tanker-Regular.woff" as="Tanker" type="font/woff" crossOrigin="" />
         <link rel="preload" href="/fonts/TANKER/Tanker-Regular.woff2" as="Tanker" type="font/woff2" crossOrigin="" />
+        <link rel="preload" href="/fonts/Satochi/Satochi-Variable.ttf" as="Satochi" type="font/ttf" crossOrigin="" />
+        <link rel="preload" href="/fonts/Satochi/Satochi-Variable.eot" as="Satochi" type="font/eot" crossOrigin="" />
+        <link rel="preload" href="/fonts/Satochi/Satochi-Variable.woff" as="Satochi" type="font/woff" crossOrigin="" />
+        <link rel="preload" href="/fonts/Satochi/Satochi-Variable.woff2" as="Satochi" type="font/woff2" crossOrigin="" />
       </head>
-      <body>{children}</body>
+      <body className="font-satochi bg-secondary text-primary">{children}</body>
     </html>
   );
 }

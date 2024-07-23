@@ -11,7 +11,7 @@
   }
   @font-face {
     font-family: "Tanker";
-    src: url(/fonts/TANKER/Tanker-Regular.ttf) format("ttf");
+    src: url(/fonts/TANKER/Tanker-Regular.ttf) format("truetype");
     font-weight: 400;
     font-style: normal;
   }
@@ -33,4 +33,34 @@
     font-weight: 400;
     font-style: normal;
   }
+  @font-face {
+    font-family: "Satochi";
+    src: url(/fonts/Satochi/Satoshi-Variable.ttf) format("truetype");
+  }
+  @font-face {
+    font-family: "Satochi";
+    src: url(/fonts/Satochi/Satoshi-Variable.eot) format("eot");
+  }
+  @font-face {
+    font-family: "Satochi";
+    src: url(/fonts/Satochi/Satoshi-Variable.woff) format("woff");
+  }
+  @font-face {
+    font-family: "Satochi";
+    src: url(/fonts/Satochi/Satoshi-Variable.woff2) format("woff2");
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Tanker";
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+h2 {
+  font-size: 40px;
 }

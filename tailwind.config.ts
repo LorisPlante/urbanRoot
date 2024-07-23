@@ -12,6 +12,14 @@ const config: Config = {
       },
       fontFamily: {
         tanker: "Tanker, sans-serif",
+        satochi: "Satochi, sans-serif",
+      },
+      padding: {
+        mobile: "24px",
+        desktop: "40px 5vw",
+      },
+      lineHeight: {
+        1: "1",
       },
     },
   },
