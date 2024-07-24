@@ -100,10 +100,7 @@ const Map: React.FC = () => {
           maxBounds={bounds}
           maxBoundsViscosity={1.0}
           className="w-full lg:w-4/5 h-[calc(100vh-438px)] md:h-[calc(100vh-270px)] lg:h-[calc(100vh-110px)] z-10">
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
-          />
+          <TileLayer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" />
           <MarkerClusterGroup>
             {filteredLocations.map((location) => (
               <Marker key={location.slug} position={[parseFloat(location.lat), parseFloat(location.lng)]} icon={ICON}>

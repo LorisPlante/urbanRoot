@@ -79,3 +79,7 @@ h4 {
   font-weight: bold;
   letter-spacing: 0.1em;
 }
+
+div.leaflet-bottom.leaflet-right {
+  display: none;
+}
