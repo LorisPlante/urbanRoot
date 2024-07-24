@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
@@ -34,6 +34,7 @@ const Map: React.FC = () => {
   const [suggestions, setSuggestions] = useState<Location[]>([]);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const ICON = icon({ iconUrl: "/medias/img/marker.png", iconSize: [32, 45] });
 
@@ -127,10 +128,11 @@ const Map: React.FC = () => {
           <div className="relative w-full h-fit">
             <input
               type="text"
+              ref={searchInputRef}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Nom / Ville / Code postal"
-              className="w-full px-4 py-3 rounded border border-darkGreen"
+              className="w-full pl-4 pr-11 py-3 rounded border border-darkGreen"
               onFocus={() => setIsInputFocused(true)}
               onBlur={() => setIsInputFocused(false)}
             />
@@ -138,14 +140,19 @@ const Map: React.FC = () => {
               <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
             </svg>
             {isInputFocused && suggestions.length > 0 && (
-              <ul className="absolute left-0 right-0 bg-white border border-darkGreen rounded max-h-48 overflow-y-auto z-10">
+              <ul className="absolute left-0 right-0 bg-white border border-darkGreen rounded mt-1 max-h-48 overflow-y-auto z-10">
                 {suggestions.map((suggestion) => (
                   <li
                     key={suggestion.slug}
                     className="px-4 py-2 cursor-pointer hover:bg-lightGreen"
+                    onMouseDown={(e) => e.preventDefault()}
                     onClick={() => {
                       setSearchQuery(suggestion.title);
                       setSuggestions([]);
+                      setIsInputFocused(false);
+                      if (searchInputRef.current) {
+                        searchInputRef.current.blur();
+                      }
                     }}>
                     {suggestion.title} - {suggestion.ville} - {suggestion.cp}
                   </li>
@@ -169,7 +176,7 @@ const Map: React.FC = () => {
               className={`w-full flex justify-between items-center cursor-pointer px-4 py-3 rounded ${
                 selectedType === "ferme-urbaine-participative" ? "bg-lightGreen font-bold" : "bg-white"
               }`}>
-              <span>Ferme Urbaine Participative</span>
+              <span>Ferme urbaine participative</span>
               <input
                 type="radio"
                 name="typeFilter"
@@ -182,7 +189,7 @@ const Map: React.FC = () => {
               className={`w-full flex justify-between items-center cursor-pointer px-4 py-3 rounded ${
                 selectedType === "ferme-urbaine-specialisee" ? "bg-lightGreen font-bold" : "bg-white"
               }`}>
-              <span>Ferme Urbaine Spécialisée</span>
+              <span>Ferme urbaine spécialisée</span>
               <input
                 type="radio"
                 name="typeFilter"

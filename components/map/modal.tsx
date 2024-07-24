@@ -62,7 +62,7 @@ const Modal: React.FC<ModalProps> = ({ location, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div ref={modalRef} className="bg-white p-6 m-6 rounded-lg max-w-lg w-full relative flex flex-col gap-4">
+      <div ref={modalRef} className="bg-white p-6 m-6 rounded-lg max-w-lg w-full max-h-[calc(100vh-48px)] relative flex flex-col gap-4">
         <button onClick={onClose} className="absolute top-0 right-2 text-4xl font-bold transition-all duration-300 hover:scale-125 hover:text-darkGreen">
           &times;
         </button>
