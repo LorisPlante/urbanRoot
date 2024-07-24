@@ -30,6 +30,7 @@ type Location = {
 const Map: React.FC = () => {
   const [locations, setLocations] = useState<Location[]>([]);
   const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
 
   const ICON = icon({ iconUrl: "/medias/img/marker.png", iconSize: [32, 45] });
@@ -49,10 +50,23 @@ const Map: React.FC = () => {
   }, []);
 
   const filteredLocations = React.useMemo(() => {
-    if (!selectedType) return locations;
+    let filtered = locations;
 
-    return locations.filter((location) => location.list_typeprojet.includes(selectedType));
-  }, [locations, selectedType]);
+    if (selectedType) {
+      filtered = filtered.filter((location) => location.list_typeprojet.includes(selectedType));
+    }
+
+    if (searchQuery) {
+      filtered = filtered.filter(
+        (location) =>
+          (location.title && location.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (location.ville && location.ville.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (location.cp && location.cp.includes(searchQuery))
+      );
+    }
+
+    return filtered;
+  }, [locations, selectedType, searchQuery]);
 
   const southWest = L.latLng(-90, -180);
   const northEast = L.latLng(90, 180);
@@ -93,7 +107,21 @@ const Map: React.FC = () => {
           </MarkerClusterGroup>
         </MapContainer>
         <div className="w-full md:w-1/4 h-auto md:h-[calc(100vh-110px)] bg-secondary flex flex-col border-l-2 border-l-darkGreen gap-5 items-center justify-start py-11 px-4">
-          <p className="w-full text-3xl font-bold text-darkGreen">Trier par :</p>
+          <p className="w-full text-3xl font-bold text-darkGreen block">Rechercher :</p>
+          <div className="relative w-full h-fit">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Nom / Ville / Code postal"
+              className="w-full px-4 py-3 rounded border border-darkGreen"
+            />
+            <svg viewBox="0 0 512 512" className="absolute top-1/2 right-4 h-6 transform -translate-y-1/2 fill-darkGreen">
+              <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+            </svg>
+          </div>
+
+          <p className="w-full text-3xl font-bold text-darkGreen block mt-5">Trier par :</p>
           <div className="flex flex-col space-y-2 w-full">
             <label className={`w-full flex justify-between items-center cursor-pointer px-4 py-3 rounded ${selectedType === null ? "bg-lightGreen font-bold" : "bg-white"}`}>
               <span>Tout</span>

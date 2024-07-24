@@ -27,7 +27,7 @@ export default function Home() {
               contribuant ainsi à améliorer notre cadre de vie et à renforcer nos liens sociaux.`}
             </p>
           </div>
-          <div className="bg-lightGreen bg-opacity-50 w-1/2 lg:w-[10%] h-10 lg:h-32"></div>
+          <div className="bg-lightGreen bg-opacity-40 w-1/2 lg:w-[10%] h-10 lg:h-32"></div>
           <div className="w-full lg:w-[45%] flex flex-col gap-5 border-2 border-lightGreen rounded-xl px-10 py-8">
             <h2 className="text-3xl sm:text-4xl">{`Qu'est-ce qu'UrbanRoots?`}</h2>
             <p>
