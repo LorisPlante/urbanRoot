@@ -31,7 +31,9 @@ const Map: React.FC = () => {
   const [locations, setLocations] = useState<Location[]>([]);
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [suggestions, setSuggestions] = useState<Location[]>([]);
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
+  const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
 
   const ICON = icon({ iconUrl: "/medias/img/marker.png", iconSize: [32, 45] });
 
@@ -48,6 +50,20 @@ const Map: React.FC = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (searchQuery) {
+      const newSuggestions = locations.filter(
+        (location) =>
+          (location.title && location.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (location.ville && location.ville.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (location.cp && location.cp.startsWith(searchQuery))
+      );
+      setSuggestions(newSuggestions);
+    } else {
+      setSuggestions([]);
+    }
+  }, [searchQuery, locations]);
 
   const filteredLocations = React.useMemo(() => {
     let filtered = locations;
@@ -115,10 +131,27 @@ const Map: React.FC = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Nom / Ville / Code postal"
               className="w-full px-4 py-3 rounded border border-darkGreen"
+              onFocus={() => setIsInputFocused(true)}
+              onBlur={() => setIsInputFocused(false)}
             />
             <svg viewBox="0 0 512 512" className="absolute top-1/2 right-4 h-6 transform -translate-y-1/2 fill-darkGreen">
               <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
             </svg>
+            {isInputFocused && suggestions.length > 0 && (
+              <ul className="absolute left-0 right-0 bg-white border border-darkGreen rounded max-h-48 overflow-y-auto z-10">
+                {suggestions.map((suggestion) => (
+                  <li
+                    key={suggestion.slug}
+                    className="px-4 py-2 cursor-pointer hover:bg-lightGreen"
+                    onClick={() => {
+                      setSearchQuery(suggestion.title);
+                      setSuggestions([]);
+                    }}>
+                    {suggestion.title} - {suggestion.ville} - {suggestion.cp}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           <p className="w-full text-3xl font-bold text-darkGreen block mt-5">Trier par :</p>
