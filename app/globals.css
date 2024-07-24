@@ -51,22 +51,22 @@
   }
 }
 
-body::-webkit-scrollbar {
+html *::-webkit-scrollbar {
   background-color: #eeeeee;
   width: 10px;
 }
 
-body::-webkit-scrollbar-track {
+html *::-webkit-scrollbar-track {
   background-color: #eeeeee;
   border-radius: 9999px;
   margin: 2px 0;
 }
 
-body::-webkit-scrollbar-button {
+html *::-webkit-scrollbar-button {
   display: none;
 }
 
-body::-webkit-scrollbar-thumb {
+html *::-webkit-scrollbar-thumb {
   background-color: #9ee8bd;
   border-radius: 9999px;
 }

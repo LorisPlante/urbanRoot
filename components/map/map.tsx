@@ -91,7 +91,7 @@ const Map: React.FC = () => {
 
   return (
     <>
-      <div className="flex w-full flex-col md:flex-row">
+      <div className="flex w-full flex-col lg:flex-row">
         <MapContainer
           center={[46.5397222, 2.4302777777777775]}
           zoom={6}
@@ -99,7 +99,7 @@ const Map: React.FC = () => {
           maxZoom={18}
           maxBounds={bounds}
           maxBoundsViscosity={1.0}
-          className="w-full md:w-4/5 h-[calc(100vh-438px)] md:h-[calc(100vh-110px)] z-10">
+          className="w-full lg:w-4/5 h-[calc(100vh-438px)] md:h-[calc(100vh-270px)] lg:h-[calc(100vh-110px)] z-10">
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
@@ -123,9 +123,9 @@ const Map: React.FC = () => {
             ))}
           </MarkerClusterGroup>
         </MapContainer>
-        <div className="w-full md:w-1/4 h-auto md:h-[calc(100vh-110px)] bg-secondary flex flex-col border-l-2 border-l-darkGreen gap-5 items-center justify-start py-11 px-4">
-          <p className="w-full text-3xl font-bold text-darkGreen block">Rechercher :</p>
-          <div className="relative w-full h-fit">
+        <div className="w-full lg:w-1/4 h-auto md:h-[calc(100vh-110px)] bg-secondary flex flex-col border-l-2 border-l-darkGreen gap-5 items-center justify-start py-11 px-4">
+          <p className="w-full max-w-[500px] text-3xl font-bold text-darkGreen block">Rechercher :</p>
+          <div className="relative w-full max-w-[500px] h-fit">
             <input
               type="text"
               ref={searchInputRef}
@@ -161,19 +161,24 @@ const Map: React.FC = () => {
             )}
           </div>
 
-          <p className="w-full text-3xl font-bold text-darkGreen block mt-5">Trier par :</p>
-          <div className="flex flex-col space-y-2 w-full">
-            <label className={`w-full flex justify-between items-center cursor-pointer px-4 py-3 rounded ${selectedType === null ? "bg-lightGreen font-bold" : "bg-white"}`}>
+          <p className="w-full max-w-[500px] text-3xl font-bold text-darkGreen block mt-5">Trier par :</p>
+          <div className="flex flex-col space-y-2 w-full max-w-[500px]">
+            <label
+              className={`w-full max-w-[500px] flex justify-between items-center cursor-pointer px-4 py-3 rounded ${
+                selectedType === null ? "bg-lightGreen font-bold" : "bg-white"
+              }`}>
               <span>Tout</span>
               <input type="radio" name="typeFilter" value="" checked={selectedType === null} onChange={() => setSelectedType(null)} />
             </label>
             <label
-              className={`w-full flex justify-between items-center cursor-pointer px-4 py-3 rounded ${selectedType === "jardin-potager" ? "bg-lightGreen font-bold" : "bg-white"}`}>
+              className={`w-full max-w-[500px] flex justify-between items-center cursor-pointer px-4 py-3 rounded ${
+                selectedType === "jardin-potager" ? "bg-lightGreen font-bold" : "bg-white"
+              }`}>
               <span>Jardin / Potager</span>
               <input type="radio" name="typeFilter" value="jardin-potager" checked={selectedType === "jardin-potager"} onChange={() => setSelectedType("jardin-potager")} />
             </label>
             <label
-              className={`w-full flex justify-between items-center cursor-pointer px-4 py-3 rounded ${
+              className={`w-full max-w-[500px] flex justify-between items-center cursor-pointer px-4 py-3 rounded ${
                 selectedType === "ferme-urbaine-participative" ? "bg-lightGreen font-bold" : "bg-white"
               }`}>
               <span>Ferme urbaine participative</span>
@@ -186,7 +191,7 @@ const Map: React.FC = () => {
               />
             </label>
             <label
-              className={`w-full flex justify-between items-center cursor-pointer px-4 py-3 rounded ${
+              className={`w-full max-w-[500px] flex justify-between items-center cursor-pointer px-4 py-3 rounded ${
                 selectedType === "ferme-urbaine-specialisee" ? "bg-lightGreen font-bold" : "bg-white"
               }`}>
               <span>Ferme urbaine spécialisée</span>
