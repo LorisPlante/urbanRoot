@@ -61,7 +61,7 @@ const Map: React.FC = () => {
         (location) =>
           (location.title && location.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
           (location.ville && location.ville.toLowerCase().includes(searchQuery.toLowerCase())) ||
-          (location.cp && location.cp.includes(searchQuery))
+          (location.cp && location.cp.startsWith(searchQuery))
       );
     }
 
