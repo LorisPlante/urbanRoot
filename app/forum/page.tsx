@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 
 export default function Forum() {
@@ -9,6 +10,7 @@ export default function Forum() {
           <h1 className="text-3xl sm:text-4xl">Forum</h1>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

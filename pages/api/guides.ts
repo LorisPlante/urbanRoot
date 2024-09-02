@@ -1,3 +1,4 @@
+//pages/api/guides.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import connectToDatabase from "@/config/database";
 import Guide from "@/models/Guide";
