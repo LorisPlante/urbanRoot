@@ -47,7 +47,9 @@ export default function Header() {
 
   return (
     <header className="z-[9999]">
-      <nav id="navMobile" className="z-40 bg-secondary fixed top-0 left-0 w-full flex md:hidden justify-between items-center py-4 px-[5vw] border-b-access border-custom">
+      <nav
+        id="navMobile"
+        className="z-40 bg-secondary fixed top-0 left-0 w-full flex md:hidden justify-between items-center py-4 px-[5vw] border-b-access border-custom border-b-2 border-b-darkGreen">
         <a href="/" className="flex justify-center items-center">
           <img src="/medias/img/logo.png" alt="Logo UrbanRoots" className="w-20" />
         </a>
