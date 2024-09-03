@@ -67,7 +67,7 @@ const Modal: React.FC<ModalProps> = ({ location, onClose }) => {
           &times;
         </button>
         <span className="text-2xl font-bold font-tanker tracking-widest leading-1 mb-4">{location.title}</span>
-        {location.img && <img src={location.img} alt={location.title} className="w-3/4 mx-auto block" />}
+        {location.img && <img src={location.img} alt={location.title} className="w-3/4 mx-auto block rounded-xl" />}
         <p>
           {location.cp} {location.ville}
         </p>

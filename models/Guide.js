@@ -10,6 +10,10 @@ const GuideSchema = new Schema(
       type: String,
       required: true,
     },
+    slug: {
+      type: String,
+      required: true,
+    },
     desc: {
       type: String,
       required: true,

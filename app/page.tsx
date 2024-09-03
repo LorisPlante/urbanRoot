@@ -59,6 +59,25 @@ export default function Home() {
             </a>
           </div>
         </section>
+        <section className="relative w-full p-mobile sm:p-desktop flex justify-start gap-3 sm:justify-between flex-col-reverse sm:flex-row">
+          <div className="overflow-hidden w-3/4 sm:w-1/2 md:w-5/12 mx-auto sm:mx-0 h-fit rounded-2xl border-2 border-lightGreen">
+            <a href="/carte" className="relative" title="Visiter la carte">
+              <img src="/medias/img/guides/guide1.jpg" alt="Capture d'écran de la carte intéractive" className="w-full transition-all duration-300" />
+              <div className="absolute top-0 left-0 w-full h-full bg-lightGreen bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 cursor-pointer"></div>
+            </a>
+          </div>
+          <div className="w-full sm:w-1/2 flex flex-col gap-4">
+            <h2 className="text-3xl sm:text-4xl">Les guides pour cultiver</h2>
+            <p className="text-lg font-medium">UrbanRoots met à votre disposition différents guides pour cultiver divers légumes dans vos jardins urbains.</p>
+            <a
+              href="/guides"
+              className="block w-fit px-6 py-2 my-2 bg-lightGreen rounded font-bold transition-all duration-300 hover:bg-darkGreen hover:text-secondary"
+              title="Consulter les guides">
+              Consulter les guides
+            </a>
+            <p>{`Venez vous cultiver pour mieux cultiver !`}</p>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

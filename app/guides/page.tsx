@@ -10,6 +10,7 @@ interface Guide {
   _id: string;
   title: string;
   img: string;
+  slug: string;
   desc: string;
 }
 
@@ -64,11 +65,11 @@ export default function Guides() {
             <ul className="flex flex-wrap justify-center gap-8 bg-lightGreen px-4 py-6 rounded-xl w-full">
               {Array.isArray(guides) && guides.length > 0 ? (
                 guides.map((guide) => (
-                  <li key={guide._id} className="flex flex-col gap-2 w-96 p-4 bg-secondary rounded-xl">
-                    <Link href={`/guides/${guide._id}`}>
+                  <li key={guide._id} className="w-96 sm:w-80 lg:w-96 p-4 bg-secondary rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105">
+                    <Link href={`/guides/${guide._id}`} className="flex flex-col gap-2">
                       <img src={guide.img} alt={guide.title} className="w-full rounded-xl" />
                       <h2 className="text-xl text-darkGreen">{guide.title}</h2>
-                      <p dangerouslySetInnerHTML={{ __html: truncateString(guide.desc, 100) }}></p>
+                      <h3>{guide.slug}</h3>
                     </Link>
                   </li>
                 ))

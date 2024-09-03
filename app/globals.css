@@ -83,3 +83,8 @@ h4 {
 div.leaflet-bottom.leaflet-right {
   display: none;
 }
+
+#descGuides ul li {
+  list-style-type: disc;
+  list-style-position: inside;
+}
