@@ -68,7 +68,7 @@ const Signup: React.FC = () => {
       {error && <p className="text-red-500">{error}</p>}
       {successMessage && <p className="text-darkGreen">{successMessage}</p>}
       <button type="submit" className="bg-lightGreen font-bold hover:bg-darkGreen hover:text-secondary transition-all duration-300 block mx-auto w-fit px-4 py-2 rounded">
-        Je m'inscris !
+        {`Je m'inscris !`}
       </button>
     </form>
   );
