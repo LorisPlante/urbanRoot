@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "leaflet.markercluster": "^1.5.3",
@@ -22,6 +23,7 @@
     "react-leaflet-markercluster": "^3.0.0-rc1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/leaflet": "^1.9.12",
     "@types/mongodb": "^4.0.7",
     "@types/mongoose": "^5.11.97",
