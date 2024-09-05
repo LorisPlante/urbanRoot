@@ -1,32 +1,29 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import UserModel from "../../models/user"; // Assurez-vous que le chemin est correct
-import connectToDatabase from "@/config/database"; // Assurez-vous que ce chemin est correct
+import UserModel from "../../models/user";
+import connectToDatabase from "@/config/database";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "GET") {
     try {
       await connectToDatabase();
 
-      // Extraire l'identifiant de l'utilisateur depuis les paramètres de la requête
       const { id } = req.query;
 
-      // Assurez-vous que l'identifiant est fourni
       if (!id || typeof id !== "string") {
-        return res.status(400).json({ message: "Invalid user ID" });
+        return res.status(400).json({ message: "User ID invalide" });
       }
 
-      // Rechercher l'utilisateur par identifiant
-      const user = await UserModel.findById(id).select("-password"); // Exclure le mot de passe de la réponse
+      const user = await UserModel.findById(id).select("-password");
 
       if (!user) {
-        return res.status(404).json({ message: "User not found" });
+        return res.status(404).json({ message: "Utilisateur introuvable" });
       }
 
       res.status(200).json(user);
     } catch (error) {
-      res.status(500).json({ message: "Server error" });
+      res.status(500).json({ message: "Erreur du serveur" });
     }
   } else {
-    res.status(405).json({ message: "Method not allowed" });
+    res.status(405).json({ message: "Méthode non autorisée" });
   }
 }

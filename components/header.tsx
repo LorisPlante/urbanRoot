@@ -1,15 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation"; // Utilisez usePathname de next/navigation
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [menu, setMenu] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const pathname = usePathname(); // Utilisez usePathname pour obtenir le chemin actuel
+  const pathname = usePathname();
 
   function toggleMenu() {
     setMenu(!menu);
@@ -17,6 +18,8 @@ export default function Header() {
 
   useEffect(() => {
     setIsMounted(true);
+    const user = localStorage.getItem("user");
+    setIsLoggedIn(!!user); // Convert the value to boolean (true if there's a user)
   }, []);
 
   useEffect(() => {
@@ -40,6 +43,12 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    window.location.href = "/deconnexion";
+  };
 
   if (!isMounted) {
     return null;
@@ -93,32 +102,41 @@ export default function Header() {
           </div>
         </div>
         <ul className="flex flex-col gap-8 text-3xl w-full items-center uppercase tracking-widest font-tanker">
-          <li className="mb-12">
-            <a href="/connexion" className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-secondary" : ""}`} title="Se connecter">
-              <span>Connexion</span>
-            </a>
-          </li>
-          <li>
-            <a href="/" className={`block w-fit px-3 py-2 ${isMounted && pathname === "/" ? "border-b-4 border-secondary" : ""}`} title="Retourner à l'accueil">
-              <span>Accueil</span>
-            </a>
-          </li>
-          <li>
-            <a href="/carte" className={`block w-fit px-3 py-2 ${isMounted && pathname === "/carte" ? "border-b-4 border-secondary" : ""}`} title="Parcourir la carte">
-              <span>Carte</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="/forum" className={`w-fit px-6 py-2 ${isMounted && pathname === "/forum" ? "border-b-4 border-secondary" : ""}`} title="Acceder au Forum">
-              <span>Forum</span>
-            </a>
-          </li>
-          <li>
-            <a href="/guides" className={`w-fit px-6 py-2 ${isMounted && pathname === "/guides" ? "border-b-4 border-secondary" : ""}`} title="Voir les guides">
-              <span>Guides</span>
-            </a>
-          </li>
+          {isLoggedIn ? (
+            <>
+              <li>
+                <a href="/" className={`block w-fit px-3 py-2 ${isMounted && pathname === "/" ? "border-b-4 border-secondary" : ""}`} title="Retourner à l'accueil">
+                  <span>Accueil</span>
+                </a>
+              </li>
+              <li>
+                <a href="/carte" className={`block w-fit px-3 py-2 ${isMounted && pathname === "/carte" ? "border-b-4 border-secondary" : ""}`} title="Parcourir la carte">
+                  <span>Carte</span>
+                </a>
+              </li>
+              <li>
+                <a href="/forum" className={`w-fit px-6 py-2 ${isMounted && pathname === "/forum" ? "border-b-4 border-secondary" : ""}`} title="Acceder au Forum">
+                  <span>Forum</span>
+                </a>
+              </li>
+              <li>
+                <a href="/guides" className={`w-fit px-6 py-2 ${isMounted && pathname === "/guides" ? "border-b-4 border-secondary" : ""}`} title="Voir les guides">
+                  <span>Guides</span>
+                </a>
+              </li>
+              <li>
+                <button onClick={handleLogout} className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-secondary" : ""}`} title="Se déconnecter">
+                  <span>Déconnexion</span>
+                </button>
+              </li>
+            </>
+          ) : (
+            <li>
+              <a href="/connexion" className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-secondary" : ""}`} title="Se connecter">
+                <span>Connexion</span>
+              </a>
+            </li>
+          )}
         </ul>
       </div>
       <nav
@@ -143,7 +161,6 @@ export default function Header() {
               <span>Carte</span>
             </a>
           </li>
-
           <li>
             <a href="/forum" className={`w-fit px-6 py-2 ${isMounted && pathname === "/forum" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`} title="Acceder au Forum">
               <span>Forum</span>
@@ -154,11 +171,22 @@ export default function Header() {
               <span>Guides</span>
             </a>
           </li>
-          <li>
-            <a href="/connexion" className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`} title="Se connecter">
-              <span>Connexion</span>
-            </a>
-          </li>
+          {isLoggedIn ? (
+            <li>
+              <button
+                onClick={handleLogout}
+                className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`}
+                title="Se déconnecter">
+                <span>Déconnexion</span>
+              </button>
+            </li>
+          ) : (
+            <li>
+              <a href="/connexion" className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`} title="Se connecter">
+                <span>Connexion</span>
+              </a>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

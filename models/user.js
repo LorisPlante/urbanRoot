@@ -21,31 +21,24 @@ userSchema.pre("save", function (next) {
 
   if (this.isModified("password") || this.isNew) {
     bcrypt.genSalt(10, function (saltError, salt) {
-      if (saltError) {
-        return next(saltError);
-      } else {
-        bcrypt.hash(user.password, salt, function (hashError, hash) {
-          if (hashError) {
-            return next(hashError);
-          }
+      if (saltError) return next(saltError);
 
-          user.password = hash;
-          next();
-        });
-      }
+      bcrypt.hash(user.password, salt, function (hashError, hash) {
+        if (hashError) return next(hashError);
+
+        user.password = hash;
+        next();
+      });
     });
   } else {
-    return next();
+    next();
   }
 });
 
 userSchema.methods.comparePassword = function (password, callback) {
   bcrypt.compare(password, this.password, function (error, isMatch) {
-    if (error) {
-      return callback(error);
-    } else {
-      callback(null, isMatch);
-    }
+    if (error) return callback(error);
+    callback(null, isMatch);
   });
 };
 

@@ -77,9 +77,9 @@ const Login: React.FC = () => {
 
   return (
     <form onSubmit={handleLogin} className="flex flex-col gap-4 p-8 w-96 bg-white border-2 border-lightGreen rounded-xl">
-      <h2>Se connecter</h2>
+      <h2 className="text-3xl">Se connecter</h2>
       <div>
-        <label htmlFor="emailLogin">Email:</label>
+        <label htmlFor="emailLogin">Email :</label>
         <input type="email" id="emailLogin" value={email} onChange={(e) => setEmail(e.target.value)} required className="rounded p-2 border-2 border-lightGreen w-full" />
       </div>
       <div className="flex flex-col gap-2">

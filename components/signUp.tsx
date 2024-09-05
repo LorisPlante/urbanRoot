@@ -40,13 +40,13 @@ const Signup: React.FC = () => {
 
   return (
     <form onSubmit={handleSignup} className="flex flex-col gap-4 p-8 w-96 bg-white border-2 border-lightGreen rounded-xl">
-      <h2>Création de compte</h2>
+      <h2 className="text-3xl">Création de compte</h2>
       <div className="flex flex-col gap-2">
-        <label htmlFor="username">Pseudo:</label>
+        <label htmlFor="username">Pseudo :</label>
         <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required className="rounded p-2 border-2 border-lightGreen" />
       </div>
       <div className="flex flex-col gap-2">
-        <label htmlFor="emailSignUp">Email:</label>
+        <label htmlFor="emailSignUp">Email :</label>
         <input type="email" id="emailSignUp" value={email} onChange={(e) => setEmail(e.target.value)} required className="rounded p-2 border-2 border-lightGreen" />
       </div>
       <div className="flex flex-col gap-2">
