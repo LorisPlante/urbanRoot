@@ -74,7 +74,9 @@ const Profile: React.FC = () => {
     <>
       <Header />
       <main className="flex min-h-[calc(100vh-110px)] w-full mt-[110px]">
-        <section className="w-full p-mobile sm:p-desktop flex flex-col justify-center items-center gap-4">
+        <section className="relative w-full p-mobile sm:p-desktop flex flex-col justify-center items-center gap-4 overflow-hidden">
+          <div className="hidden lg:block absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full border- border-[100px] border-darkGreen transform -translate-x-1/2 translate-y-1/2 "></div>
+          <div className="hidden lg:block absolute top-0 right-0 w-[500px] h-[500px] rounded-full border- border-[100px] border-darkGreen transform translate-x-1/2 translate-y-1/2 "></div>
           <div className="p-8 w-96 bg-white border-2 border-lightGreen rounded-xl flex flex-col gap-4">
             <h1 className="text-3xl">Profile</h1>
             <div>
