@@ -1,7 +1,6 @@
 // components/CommentForm.tsx
 "use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Props = {
   postId: string;
@@ -10,10 +9,13 @@ type Props = {
 
 export default function CommentForm({ postId, refreshComments }: Props) {
   const [commentContent, setCommentContent] = useState("");
+  const [userId, setUserId] = useState<string | null>(null); // Stocker l'ID de l'utilisateur
 
-  // Récupérer l'ID de l'utilisateur depuis le localStorage
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
-  const userId = user._id;
+  useEffect(() => {
+    // Accéder à localStorage uniquement sur le client
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    setUserId(user._id || null);
+  }, []);
 
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

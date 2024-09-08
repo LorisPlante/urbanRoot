@@ -1,8 +1,8 @@
 "use client";
+
+import { useState, useEffect } from "react";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { Loader } from "@/components/icons/loader";
-import { useState, useEffect } from "react";
 
 type Post = {
   _id: string;
@@ -16,9 +16,10 @@ const ForumPage = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const [user, setUser] = useState<{ _id?: string }>({});
 
   useEffect(() => {
+    // Fetch posts
     const fetchPosts = async () => {
       const res = await fetch("/api/posts");
       const data = await res.json();
@@ -26,10 +27,19 @@ const ForumPage = () => {
     };
 
     fetchPosts();
+
+    // Check localStorage for user data
+    const userFromLocalStorage = JSON.parse(localStorage.getItem("user") || "{}");
+    setUser(userFromLocalStorage);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!user._id) {
+      console.error("User not logged in");
+      return;
+    }
 
     await fetch("/api/posts", {
       method: "POST",
@@ -37,7 +47,7 @@ const ForumPage = () => {
       body: JSON.stringify({ title, content, author: user._id }),
     });
 
-    // Réactualiser la liste des posts après la création d'un nouveau post
+    // Refresh posts
     const res = await fetch("/api/posts");
     const data = await res.json();
     setPosts(data);
@@ -46,29 +56,14 @@ const ForumPage = () => {
     setContent("");
   };
 
-  if (!posts) {
-    return (
-      <>
-        <Header></Header>
-        <main className="flex min-h-[calc(100vh-110px)] w-full mt-[110px]">
-          <section className="relative w-full p-mobile sm:p-desktop flex flex-col gap-4 ">
-            <div className="flex justify-center items-center w-full py-10">
-              <Loader size={44} color="fill-darkGreen"></Loader>
-            </div>
-          </section>
-        </main>
-      </>
-    ); // Affiche un message de chargement en attendant
-  }
-
   return (
     <>
       <Header />
       <main className="flex min-h-[calc(100vh-110px)] w-full mt-[110px]">
         <section className="relative w-full p-mobile sm:p-desktop flex flex-col gap-4">
           <h1 className="text-3xl">Forum</h1>
-          <div className="w-full flex flex-col-reverse md:flex-row justify-between gap-4">
-            <ul className="flex flex-col gap-4 bg-lightGreen rounded-xl p-4 w-full md:w-2/3">
+          <div className="w-full flex justify-between gap-4">
+            <ul className="flex flex-col gap-4 bg-lightGreen rounded-xl p-4 w-2/3">
               {posts.map((post) => (
                 <li key={post._id}>
                   <a href={`/forum/${post._id}`} className="flex gap-2 bg-secondary w-full p-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-[101%]">
@@ -85,16 +80,18 @@ const ForumPage = () => {
                 </li>
               ))}
             </ul>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-2 bg-white border-2 border-lightGreen rounded-xl p-4 w-full md:w-1/3 h-fit">
+            <div className="w-1/3 flex flex-col gap-2">
               <h2 className="text-3xl">Créer un nouveau post</h2>
-              <label htmlFor="titrePost">Titre :</label>
-              <input id="titrePost" value={title} onChange={(e) => setTitle(e.target.value)} className="py-2 px-4 rounded border-2 border-lightGreen w-full" />
-              <label htmlFor="subjectPost">Sujet :</label>
-              <textarea id="subjectPost" value={content} onChange={(e) => setContent(e.target.value)} className="py-2 px-4 rounded border-2 border-lightGreen w-full" />
               {user._id ? (
-                <button type="submit" className="bg-lightGreen font-bold hover:bg-darkGreen hover:text-secondary transition-all duration-300 block mx-auto w-fit px-4 py-2 rounded">
-                  Créer un post
-                </button>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-2 bg-secondary border-2 border-lightGreen rounded-xl p-4 w-full h-fit">
+                  <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" className="py-2 px-4 rounded" />
+                  <textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Content" className="py-2 px-4 rounded" />
+                  <button
+                    type="submit"
+                    className="bg-lightGreen font-bold hover:bg-darkGreen hover:text-secondary transition-all duration-300 block mx-auto w-fit px-4 py-2 rounded">
+                    Créer un post
+                  </button>
+                </form>
               ) : (
                 <a
                   href="/connexion"
@@ -102,7 +99,7 @@ const ForumPage = () => {
                   Se connecter pour créer un post
                 </a>
               )}
-            </form>
+            </div>
           </div>
         </section>
       </main>
