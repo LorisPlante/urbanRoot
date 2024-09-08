@@ -25,7 +25,7 @@ export default function CommentForm({ postId, refreshComments }: Props) {
       return;
     }
 
-    await fetch(`/api/comments`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/comments`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content: commentContent, post: postId, author: userId }),

@@ -21,7 +21,7 @@ const ForumPage = () => {
   useEffect(() => {
     // Fetch posts
     const fetchPosts = async () => {
-      const res = await fetch("/api/posts");
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
       const data = await res.json();
       setPosts(data);
     };
@@ -41,14 +41,14 @@ const ForumPage = () => {
       return;
     }
 
-    await fetch("/api/posts", {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, content, author: user._id }),
     });
 
     // Refresh posts
-    const res = await fetch("/api/posts");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`);
     const data = await res.json();
     setPosts(data);
 

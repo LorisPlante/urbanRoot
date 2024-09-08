@@ -22,11 +22,11 @@ type CommentType = {
 };
 
 async function fetchPostAndComments(id: string) {
-  const postResponse = await fetch(`http://localhost:3000/api/posts/${id}`);
+  const postResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`);
   if (!postResponse.ok) return { post: null, comments: [] };
 
   const post = await postResponse.json();
-  const commentsResponse = await fetch(`http://localhost:3000/api/comments?post=${id}`);
+  const commentsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/comments?post=${id}`);
   const comments = await commentsResponse.json();
 
   return { post, comments };
