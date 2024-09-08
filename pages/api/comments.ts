@@ -1,7 +1,7 @@
 // pages/api/comments.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import connectToDatabase from "@/config/database";
-import Comment from "@/models/Comment";
+import Comment from "@/models/comment";
 import mongoose from "mongoose";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
