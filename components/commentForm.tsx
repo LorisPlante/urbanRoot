@@ -37,7 +37,7 @@ export default function CommentForm({ postId, refreshComments }: Props) {
 
   return (
     <div>
-      <form onSubmit={handleCommentSubmit} className="flex flex-col gap-2">
+      <form onSubmit={handleCommentSubmit} className="flex flex-col gap-2 bg-white">
         <h2 className="text-3xl">Laisser un commentaire</h2>
         <label htmlFor="comment">Commentaire :</label>
         <input
