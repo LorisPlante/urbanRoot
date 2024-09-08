@@ -51,6 +51,11 @@
   }
 }
 
+* {
+  scroll-margin-top: 114px;
+  scroll-behavior: smooth;
+}
+
 html *::-webkit-scrollbar {
   background-color: #eeeeee;
   width: 10px;

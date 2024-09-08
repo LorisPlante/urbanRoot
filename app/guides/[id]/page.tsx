@@ -1,4 +1,3 @@
-// app/guides/[id]/page.tsx
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Footer from "@/components/footer";
@@ -29,7 +28,7 @@ export default async function GuidePage({ params }: { params: { id: string } }) 
   const guide = await fetchGuide(params.id);
 
   if (!guide) {
-    notFound(); // Returns a 404 response if the guide is not found
+    notFound(); // Retourne une réponse 404 si le guide n'est pas trouvé
   }
 
   return (
@@ -45,9 +44,11 @@ export default async function GuidePage({ params }: { params: { id: string } }) 
             </svg>
           </a>
           <div className="w-full sm:w-2/3 lg:w-7/12 flex flex-col gap-4 p-4 mx-auto bg-secondary rounded-xl">
-            <img src={guide.img} alt={guide.title} className="w-full rounded-xl" />
+            {/* Utilisation de next/image avec des dimensions fixes pour éviter l'erreur */}
+            <Image src={guide.img} alt={guide.title} width={500} height={300} className="w-full rounded-xl" />
             <h1 className="text-3xl text-darkGreen">{guide.title}</h1>
             <h2>{guide.slug}</h2>
+            {/* Affiche guide.desc de manière sécurisée */}
             <p dangerouslySetInnerHTML={{ __html: guide.desc }} id="descGuides"></p>
           </div>
         </section>
