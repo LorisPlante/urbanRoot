@@ -125,10 +125,7 @@ export default function Header() {
           {isLoggedIn ? (
             <>
               <li>
-                <a
-                  href="/profile"
-                  className={`w-fit px-6 py-2 ${isMounted && pathname === "/profile" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`}
-                  title="Voir les guides">
+                <a href="/profile" className={`w-fit px-6 py-2 ${isMounted && pathname === "/profile" ? "border-b-4 border-secondary" : ""}`} title="Voir les guides">
                   <span>Profil</span>
                 </a>
               </li>

@@ -24,7 +24,7 @@ export default function Guides() {
       setIsLoading(true); // Début du chargement
       setError(null); // Réinitialiser l'erreur
       try {
-        const response = await fetch("/api/guides");
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/guides`);
         if (!response.ok) {
           throw new Error("Failed to fetch guides");
         }
@@ -34,7 +34,7 @@ export default function Guides() {
         setError("Une erreur est survenue lors de la récupération des guides.");
         console.error("Error fetching guides:", error);
       } finally {
-        setIsLoading(false); // Fin du chargement
+        setIsLoading(false);
       }
     };
     fetchGuides();

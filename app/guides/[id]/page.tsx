@@ -13,7 +13,10 @@ interface Guide {
 
 async function fetchGuide(id: string): Promise<Guide | null> {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/guides/${id}`);
+    const timestamp = new Date().getTime(); // Génère un timestamp unique
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/guides/${id}?t=${timestamp}`, {
+      cache: "no-store", // Empêche la mise en cache côté client
+    });
     if (!response.ok) {
       throw new Error("Failed to fetch");
     }
@@ -42,11 +45,9 @@ export default async function GuidePage({ params }: { params: { id: string } }) 
             </svg>
           </a>
           <div className="w-full sm:w-2/3 lg:w-7/12 flex flex-col gap-4 p-4 mx-auto bg-secondary rounded-xl">
-            {/* Utilisation de next/image avec des dimensions fixes pour éviter l'erreur */}
             <Image src={guide.img} alt={guide.title} width={500} height={300} className="w-full rounded-xl" />
             <h1 className="text-3xl text-darkGreen">{guide.title}</h1>
             <h2>{guide.slug}</h2>
-            {/* Affiche guide.desc de manière sécurisée */}
             <p dangerouslySetInnerHTML={{ __html: guide.desc }} id="descGuides"></p>
           </div>
         </section>
