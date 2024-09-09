@@ -76,7 +76,7 @@ export default function Home() {
           <div className="w-full sm:w-1/2 flex flex-col gap-4">
             <h2 className="text-3xl sm:text-4xl">Le forum de la communauté</h2>
             <p className="text-lg font-medium">
-              UrbanRoots et sa communauté peuvent communiquer et partager des informations concernant le jardinage urbains afin de s'entraider pour le bien des potager.
+              {`UrbanRoots et sa communauté peuvent communiquer et partager des informations concernant le jardinage urbains afin de s'entraider pour le bien des potager.`}
             </p>
             <a
               href="/forum"
