@@ -123,11 +123,18 @@ export default function Header() {
             </a>
           </li>
           {isLoggedIn ? (
-            <li>
-              <button onClick={handleLogout} className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-secondary" : ""}`} title="Se déconnecter">
-                <span>Déconnexion</span>
-              </button>
-            </li>
+            <>
+              <li>
+                <a href="/profile" className={`w-fit px-6 py-2 ${isMounted && pathname === "/guides" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`} title="Voir les guides">
+                  <span>Profil</span>
+                </a>
+              </li>
+              <li>
+                <button onClick={handleLogout} className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-secondary" : ""}`} title="Se déconnecter">
+                  <span>Déconnexion</span>
+                </button>
+              </li>
+            </>
           ) : (
             <li>
               <a href="/connexion" className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-secondary" : ""}`} title="Se connecter">
@@ -145,7 +152,7 @@ export default function Header() {
         <a href="/">
           <img src="/medias/img/logo.png" alt="Logo UrbanRoots" className="w-20" />
         </a>
-        <ul className="flex gap-4 items-center uppercase tracking-widest font-tanker text-xl">
+        <ul className="flex gap-0 items-center uppercase tracking-widest font-tanker text-xl">
           <li>
             <a href="/" className={`block w-fit px-3 py-2 ${isMounted && pathname === "/" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`} title="Retourner à l'accueil">
               <span>Accueil</span>
@@ -170,14 +177,21 @@ export default function Header() {
             </a>
           </li>
           {isLoggedIn ? (
-            <li>
-              <button
-                onClick={handleLogout}
-                className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`}
-                title="Se déconnecter">
-                <span>Déconnexion</span>
-              </button>
-            </li>
+            <>
+              <li>
+                <a href="/profile" className={`w-fit px-6 py-2 ${isMounted && pathname === "/guides" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`} title="Voir les guides">
+                  <span>Profil</span>
+                </a>
+              </li>
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`}
+                  title="Se déconnecter">
+                  <span>Déconnexion</span>
+                </button>
+              </li>
+            </>
           ) : (
             <li>
               <a href="/connexion" className={`w-fit px-6 py-2 ${isMounted && pathname === "/connexion" ? "border-b-4 border-darkGreen text-darkGreen" : ""}`} title="Se connecter">
