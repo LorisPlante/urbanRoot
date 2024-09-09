@@ -60,7 +60,7 @@ export default function PostPage({ params }: { params: { id: string } }) {
         </main>
         <Footer />
       </>
-    ); // Affiche un message de chargement en attendant
+    );
   }
 
   return (
