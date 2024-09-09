@@ -74,7 +74,7 @@ const ForumPage = () => {
       <main className="flex min-h-[calc(100vh-110px)] w-full mt-[110px]">
         <section className="relative w-full p-mobile sm:p-desktop flex flex-col gap-4">
           <h1 className="text-3xl">Forum</h1>
-          <div className="w-full flex justify-between gap-4">
+          <div className="w-full flex flex-col-reverse md:flex-row justify-between gap-4">
             <ul className="flex flex-col gap-4 bg-lightGreen rounded-xl p-4 w-full md:w-2/3">
               {Array.isArray(posts) && posts.length > 0 ? (
                 posts.map((post) => (
@@ -94,13 +94,12 @@ const ForumPage = () => {
                 ))
               ) : (
                 <div className="flex justify-center items-center w-full py-10">
-                  <Loader size={44} color="fill-secondary" />
+                  <Loader size={44} color="fill-darkGreen" />
                 </div>
               )}
             </ul>
             <div className="w-full md:w-1/3 flex flex-col gap-2 bg-white p-4 border-2 border-lightGreen rounded-xl h-fit">
               <h2 className="text-3xl">Créer un nouveau post</h2>
-
               <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full h-fit">
                 <label htmlFor="titrePost">Titre :</label>
                 <input id="titrePost" value={title} onChange={(e) => setTitle(e.target.value)} className="py-2 px-4 rounded border-2 border-lightGreen w-full" />
