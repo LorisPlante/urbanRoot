@@ -100,25 +100,26 @@ const ForumPage = () => {
             </ul>
             <div className="w-full md:w-1/3 flex flex-col gap-2 bg-white p-4 border-2 border-lightGreen rounded-xl h-fit">
               <h2 className="text-3xl">Créer un nouveau post</h2>
-              {user._id ? (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full h-fit">
-                  <label htmlFor="titrePost">Titre :</label>
-                  <input id="titrePost" value={title} onChange={(e) => setTitle(e.target.value)} className="py-2 px-4 rounded border-2 border-lightGreen w-full" />
-                  <label htmlFor="subjectPost">Sujet :</label>
-                  <textarea id="subjectPost" value={content} onChange={(e) => setContent(e.target.value)} className="py-2 px-4 rounded border-2 border-lightGreen w-full" />
+
+              <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full h-fit">
+                <label htmlFor="titrePost">Titre :</label>
+                <input id="titrePost" value={title} onChange={(e) => setTitle(e.target.value)} className="py-2 px-4 rounded border-2 border-lightGreen w-full" />
+                <label htmlFor="subjectPost">Sujet :</label>
+                <textarea id="subjectPost" value={content} onChange={(e) => setContent(e.target.value)} className="py-2 px-4 rounded border-2 border-lightGreen w-full" />
+                {user._id ? (
                   <button
                     type="submit"
                     className="bg-lightGreen font-bold hover:bg-darkGreen hover:text-secondary transition-all duration-300 block mx-auto w-fit px-4 py-2 rounded">
                     Créer un post
                   </button>
-                </form>
-              ) : (
-                <a
-                  href="/connexion"
-                  className="bg-lightGreen font-bold hover:bg-darkGreen hover:text-secondary transition-all duration-300 block mx-auto w-fit px-4 py-2 rounded text-center">
-                  Se connecter pour créer un post
-                </a>
-              )}
+                ) : (
+                  <a
+                    href="/connexion"
+                    className="bg-lightGreen font-bold hover:bg-darkGreen hover:text-secondary transition-all duration-300 block mx-auto w-fit px-4 py-2 rounded text-center">
+                    Se connecter pour créer un post
+                  </a>
+                )}
+              </form>
             </div>
           </div>
         </section>
