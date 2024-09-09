@@ -1,6 +1,7 @@
 "use client";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { Loader } from "@/components/icons/loader";
 import { useState, useEffect } from "react";
 
 type Post = {
@@ -92,7 +93,9 @@ const ForumPage = () => {
                   </li>
                 ))
               ) : (
-                <li>Aucun post trouvé</li>
+                <div className="flex justify-center items-center w-full py-10">
+                  <Loader size={44} color="fill-secondary" />
+                </div>
               )}
             </ul>
             <div className="w-full md:w-1/3 flex flex-col gap-2 bg-white p-4 border-2 border-lightGreen rounded-xl h-fit">
